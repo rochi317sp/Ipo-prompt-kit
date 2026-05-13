@@ -12,9 +12,12 @@
     <h1 class="text-4xl font-bold text-emerald-400 text-center mb-6">IPO Prompt Kit</h1>
     <p class="text-center text-gray-400 mb-8">Cari IPO & Generate Prompt</p>
 
-    <input id="search" type="text" placeholder="Taip nama IPO seperti Gold Li..." 
-           class="w-full p-5 rounded-2xl bg-zinc-900 border border-zinc-700 text-lg mb-6 focus:outline-none"
-           onkeyup="searchIPO(this.value)">
+    <input 
+      id="search" 
+      type="text" 
+      placeholder="Taip nama IPO seperti Gold Li..." 
+      class="w-full p-5 rounded-2xl bg-zinc-900 border border-zinc-700 text-lg mb-6 focus:outline-none"
+      onkeyup="searchIPO(this.value)">
 
     <div id="results" class="space-y-4"></div>
   </div>
@@ -29,7 +32,10 @@
 
     function searchIPO(q) {
       const res = document.getElementById('results');
-      if (q.length < 2) { res.innerHTML = ''; return; }
+      if (q.length < 2) { 
+        res.innerHTML = ''; 
+        return; 
+      }
       const filtered = ipos.filter(i => i.name.toLowerCase().includes(q.toLowerCase()));
       res.innerHTML = filtered.map(i => `
         <div class="p-5 bg-zinc-900 rounded-2xl">
