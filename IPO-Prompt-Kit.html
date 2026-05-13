@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPO Prompt Kit</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0a0e1a] text-white min-h-screen p-4">
+
+  <div class="max-w-xl mx-auto">
+    <h1 class="text-4xl font-bold text-emerald-400 text-center mb-6">IPO Prompt Kit</h1>
+    <p class="text-center text-gray-400 mb-8">Cari IPO & Generate Prompt</p>
+
+    <input id="search" type="text" placeholder="Taip nama IPO seperti Gold Li..." 
+           class="w-full p-5 rounded-2xl bg-zinc-900 border border-zinc-700 text-lg mb-6 focus:outline-none"
+           onkeyup="searchIPO(this.value)">
+
+    <div id="results" class="space-y-4"></div>
+  </div>
+
+  <script>
+    const ipos = [
+      {name:"Gold Li Holdings Berhad", price:"0.13", date:"18 Mei 2026"},
+      {name:"SkyeChip Berhad", price:"0.88", date:"20 Mei 2026"},
+      {name:"EI Power Berhad", price:"0.48", date:"21 Mei 2026"},
+      {name:"Bus Cap Berhad", price:"0.23", date:"03 Jun 2026"}
+    ];
+
+    function searchIPO(q) {
+      const res = document.getElementById('results');
+      if (q.length < 2) { res.innerHTML = ''; return; }
+      const filtered = ipos.filter(i => i.name.toLowerCase().includes(q.toLowerCase()));
+      res.innerHTML = filtered.map(i => `
+        <div class="p-5 bg-zinc-900 rounded-2xl">
+          <div class="font-bold">${i.name}</div>
+          <div class="text-emerald-400 text-sm">RM ${i.price} • ${i.date}</div>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
